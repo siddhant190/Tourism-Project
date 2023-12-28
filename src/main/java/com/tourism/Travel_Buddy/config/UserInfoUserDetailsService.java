@@ -17,30 +17,44 @@ public class UserInfoUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepo repo;
 
-    @Autowired
-    private AdminRepo adminRepo;
+    // @Autowired
+    // private AdminRepo adminRepo;
 
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = repo.findByEmail(email);
-        Admin admin = adminRepo.findByEmail(email);
-        if (user != null) {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+     //  User user = repo.findByEmail(email);
+//       // Admin admin = adminRepo.findByEmail(email);
+//        if (user != null) {
+//            return new org.springframework.security.core.userdetails.User(
+//                    user.getEmail(),
+//                    user.getPassword(),
+//                    Collections.singleton(new SimpleGrantedAuthority("USER"))
+//            );
+//        // } else if (admin != null) {
+//        //     return new org.springframework.security.core.userdetails.User(
+//        //             admin.getEmail(),
+//        //             admin.getPassword(),
+//        //             Collections.singleton(new SimpleGrantedAuthority("ADMIN"))
+//        //     );
+//         } else {
+//            throw new UsernameNotFoundException("User not found with username: " + email);
+//        }
+//    }
+//
+//
+//}
+            User userDetails = repo.findByEmail(username);
+            //repo admin
+            if (userDetails == null) {
+                throw new UsernameNotFoundException("User not found");
+            }
+
             return new org.springframework.security.core.userdetails.User(
-                    user.getEmail(),
-                    user.getPassword(),
+                    userDetails.getEmail(),
+                    userDetails.getPassword(),
                     Collections.singleton(new SimpleGrantedAuthority("USER"))
             );
-        } else if (admin != null) {
-            return new org.springframework.security.core.userdetails.User(
-                    admin.getEmail(),
-                    admin.getPassword(),
-                    Collections.singleton(new SimpleGrantedAuthority("ADMIN"))
-            );
-        } else {
-            throw new UsernameNotFoundException("User not found with username: " + email);
         }
+
     }
-
-
-}
