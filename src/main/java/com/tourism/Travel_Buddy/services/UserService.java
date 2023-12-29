@@ -17,6 +17,7 @@ public class UserService {
 
     public User registerUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole("USER");
         return userRepo.save(user);
     }
 
@@ -37,5 +38,9 @@ public class UserService {
         existingUser.setEmail(user.getEmail());
         User updatedProduct = userRepo.save(existingUser);
         return updatedProduct;
+    }
+
+    public User getUserByEmail(String email) {
+        return userRepo.findByEmail(email);
     }
 }
