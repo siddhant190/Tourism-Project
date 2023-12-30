@@ -1,6 +1,7 @@
 package com.tourism.Travel_Buddy.controller;
 
 import ch.qos.logback.core.model.Model;
+import com.tourism.Travel_Buddy.model.Status;
 import com.tourism.Travel_Buddy.model.User;
 import com.tourism.Travel_Buddy.services.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,10 @@ public class HomeController {
     @Autowired
     private HomeService homeService;
 
-    @CrossOrigin(origins = "http://localhost:8080")
-    @PostMapping("/login")
-   public String login(@RequestBody User user){
-        homeService.login(user);
-        return "login successful";
+    @CrossOrigin
+    @PostMapping("/loginAccount")
+   public Status login(@RequestBody User user){
+        return homeService.login(user);
     }
-
 
 }

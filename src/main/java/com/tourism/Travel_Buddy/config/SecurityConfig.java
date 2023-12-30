@@ -36,9 +36,10 @@ public class SecurityConfig {
                         .permitAll()
                 ).formLogin(formLogin ->
                         formLogin
-                                .loginPage("/login")
+                                .loginPage("http://localhost:4200/login") // Specify the Angular login page URL
                                 .permitAll()
                 );
+
         return httpSecurity.build();
 
     }

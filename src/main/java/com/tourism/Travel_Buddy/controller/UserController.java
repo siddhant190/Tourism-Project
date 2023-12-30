@@ -15,9 +15,9 @@ public class UserController {
     //-------------------------Register user---------------------------------------------
     @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody User user) {
-        userService.registerUser(user);
-        return ResponseEntity.ok("Registration successful");
+    public User registerUser(@RequestBody User user) {
+        //userService.registerUser(user);
+        return userService.registerUser(user);
     }
 
     //--------------------------Get user by id-------------------------------------------

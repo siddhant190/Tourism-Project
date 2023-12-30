@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -26,9 +27,14 @@ public class PackageController {
     }
 
     //--------------------------Get pack by id-------------------------------------------
-    @GetMapping("/gatPackage/{id}")
-    public ResponseEntity<Optional<Packages>> getUser(@PathVariable int id) {
+    @GetMapping("/user/getPackage/{id}")
+    public ResponseEntity<Optional<Packages>> getPackage(@PathVariable int id) {
         return ResponseEntity.ok(packageService.getPackage(id));
+    }
+
+    @GetMapping("/getAllPackage")
+    public ResponseEntity<List<Packages>>getAllPackages(){
+        return ResponseEntity.ok(packageService.getAllPackages());
     }
 
     //------------------------update pack details---------------------------------------

@@ -45,17 +45,3 @@ public class UserInfoUserDetailsService implements UserDetailsService {
 
 
 }
-//            User userDetails = repo.findByEmail(username);
-//            //repo admin
-//            if (userDetails == null) {
-//                throw new UsernameNotFoundException("User not found");
-//            }
-//
-//            return new org.springframework.security.core.userdetails.User(
-//                    userDetails.getEmail(),
-//                    userDetails.getPassword(),
-//                    Collections.singleton(new SimpleGrantedAuthority("USER"))
-//            );
-//        }
-
-   // }

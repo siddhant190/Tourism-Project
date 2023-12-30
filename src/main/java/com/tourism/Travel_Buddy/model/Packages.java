@@ -14,22 +14,20 @@ public class Packages {
     private String description;
     private float price;
     private Date date;
-    private int day;
 
     @Lob
-    private byte[] img;
+    private String img;
 
     public Packages() {
     }
 
-    public Packages(int id, String location, String description, float price, Date date, byte[] img, int day) {
+    public Packages(int id, String location, String description, float price, Date date, String img) {
         this.id = id;
         this.location = location;
         this.description = description;
         this.price = price;
         this.date = date;
         this.img = img;
-        this.day=day;
     }
 
     public int getId() {
@@ -72,19 +70,12 @@ public class Packages {
         this.date = date;
     }
 
-    public byte[] getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(byte[] img) {
+    public void setImg(String img) {
         this.img = img;
     }
 
-    public int getDay() {
-        return day;
-    }
-
-    public void setDay(int day) {
-        this.day = day;
-    }
 }

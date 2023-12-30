@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -32,23 +33,28 @@ public class PackageService {
     }
 
     public String addPackage(Packages pack,MultipartFile file) throws IOException {
-//        if (file.isEmpty()) {
-//
-//            pack.setImg("contact.png");
-//
-//        } else {
-//            pack.setImg(file.getOriginalFilename());
-//
-//            File saveFile = new ClassPathResource("static/image").getFile();
-//
-//            Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + file.getOriginalFilename());
-//
-//            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-//        }
+        if (file.isEmpty()) {
 
-        pack.setImg(file.getBytes());
+            pack.setImg("contact.png");
+
+        } else {
+            pack.setImg(file.getOriginalFilename());
+
+            File saveFile = new ClassPathResource("static/image").getFile();
+
+            Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + file.getOriginalFilename());
+
+            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+        }
+
+        //pack.setImg(file.getBytes());
         packageRepo.save(pack);
         return "Package add";
 
+    }
+
+    public List<Packages> getAllPackages() {
+        System.out.println("packages send");
+        return packageRepo.findAll();
     }
 }
