@@ -1,6 +1,5 @@
 package com.tourism.Travel_Buddy.controller;
 
-import com.tourism.Travel_Buddy.model.Admin;
 import com.tourism.Travel_Buddy.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,15 +12,10 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    @GetMapping("/admin/dashboard")
+    @GetMapping("/admin")
     public String welcome(){
+        System.out.println("admin");
         return "Welcome Admin";
-    }
-
-    @PostMapping("/reg")
-    public String registerAdmin(@RequestBody Admin admin){
-        adminService.registerAdmin(admin);
-        return "add";
     }
 
 

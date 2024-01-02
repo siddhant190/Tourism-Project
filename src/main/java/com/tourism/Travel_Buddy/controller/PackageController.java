@@ -1,13 +1,10 @@
 package com.tourism.Travel_Buddy.controller;
 
-import ch.qos.logback.core.model.Model;
 import com.tourism.Travel_Buddy.model.Packages;
 import com.tourism.Travel_Buddy.services.PackageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,10 +17,16 @@ public class PackageController {
     private PackageService packageService;
 
     //-------------------------Add package---------------------------------------------
-    @PostMapping(value = "/addPackage",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public String addPackage(@ModelAttribute Packages pack,@RequestParam("file") MultipartFile file) throws IOException {
-        packageService.addPackage(pack,file);
-        return "Package added";
+//    @PostMapping(value = "/addPackage",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+//    public String addPackage(@ModelAttribute Packages pack,@RequestParam("file") MultipartFile file) throws IOException {
+//        packageService.addPackage(pack,file);
+//        return "Package added";
+//    }
+
+    @PostMapping(value = "/admin/addPackage")
+    public Packages addPackage(@RequestBody Packages pack) throws IOException {
+        System.out.println("Received Package: " + pack);
+        return packageService.addPackage(pack);
     }
 
     //--------------------------Get pack by id-------------------------------------------

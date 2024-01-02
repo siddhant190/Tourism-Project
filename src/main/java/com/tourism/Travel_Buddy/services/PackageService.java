@@ -32,24 +32,31 @@ public class PackageService {
         return packageRepo.findById(id);
     }
 
-    public String addPackage(Packages pack,MultipartFile file) throws IOException {
-        if (file.isEmpty()) {
+//    public String addPackage(Packages pack,MultipartFile file) throws IOException {
+//        if (file.isEmpty()) {
+//
+//            pack.setImg("contact.png");
+//
+//        } else {
+//            pack.setImg(file.getOriginalFilename());
+//
+//            File saveFile = new ClassPathResource("static/image").getFile();
+//
+//            Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + file.getOriginalFilename());
+//
+//            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+//        }
+//
+//        //pack.setImg(file.getBytes());
+//        packageRepo.save(pack);
+//        return "Package add";
+//
+//    }
 
-            pack.setImg("contact.png");
-
-        } else {
-            pack.setImg(file.getOriginalFilename());
-
-            File saveFile = new ClassPathResource("static/image").getFile();
-
-            Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + file.getOriginalFilename());
-
-            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-        }
-
+    public Packages addPackage(Packages pack) throws IOException {
         //pack.setImg(file.getBytes());
-        packageRepo.save(pack);
-        return "Package add";
+        System.out.println(pack);
+        return  packageRepo.save(pack);
 
     }
 

@@ -13,21 +13,21 @@ public class Packages {
     private String location;
     private String description;
     private float price;
-    private Date date;
-
     @Lob
     private String img;
+
+    private int day;
 
     public Packages() {
     }
 
-    public Packages(int id, String location, String description, float price, Date date, String img) {
+    public Packages(int id, String location, String description, float price, String img, int day) {
         this.id = id;
         this.location = location;
         this.description = description;
         this.price = price;
-        this.date = date;
         this.img = img;
+        this.day=day;
     }
 
     public int getId() {
@@ -62,14 +62,6 @@ public class Packages {
         this.price = price;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public String getImg() {
         return img;
     }
@@ -78,4 +70,23 @@ public class Packages {
         this.img = img;
     }
 
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    @Override
+    public String toString() {
+        return "Packages{" +
+                "id=" + id +
+                ", location='" + location + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", img='" + img + '\'' +
+                ", day=" + day +
+                '}';
+    }
 }

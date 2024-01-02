@@ -15,30 +15,30 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public User registerUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole("USER");
-        return userRepo.save(user);
-    }
+//    public User registerUser(User user) {
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        //user.setRole("USER");
+//        return userRepo.save(user);
+//    }
 
-    public User getUser(int id) {
-        return userRepo.findById(id);
-    }
+//    public User getUser(int id) {
+//        return userRepo.findById(id);
+//    }
 
-    public void deleteUser(int id) {
-        userRepo.deleteById(id);
-    }
+//    public void deleteUser(String email) {
+//        userRepo.deleteById(Integer.valueOf(email));
+//    }
 
-    public User updateUser(User user, int id) {
-        User existingUser = userRepo.findById(id);
-        existingUser.setId(id);
-        existingUser.setName(user.getName());
-        existingUser.setAddress(user.getAddress());
-        existingUser.setMobile(user.getMobile());
-        existingUser.setEmail(user.getEmail());
-        User updatedProduct = userRepo.save(existingUser);
-        return updatedProduct;
-    }
+//    public User updateUser(User user, int id) {
+//        User existingUser = userRepo.findByEmail(id);
+//        existingUser.setId(id);
+//        existingUser.setName(user.getName());
+//        existingUser.setAddress(user.getAddress());
+//        existingUser.setMobile(user.getMobile());
+//        existingUser.setEmail(user.getEmail());
+//        User updatedProduct = userRepo.save(existingUser);
+//        return updatedProduct;
+//    }
 
     public User getUserByEmail(String email) {
         return userRepo.findByEmail(email);
