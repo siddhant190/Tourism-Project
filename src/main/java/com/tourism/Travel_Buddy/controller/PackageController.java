@@ -17,35 +17,29 @@ public class PackageController {
     private PackageService packageService;
 
     //-------------------------Add package---------------------------------------------
-//    @PostMapping(value = "/addPackage",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-//    public String addPackage(@ModelAttribute Packages pack,@RequestParam("file") MultipartFile file) throws IOException {
-//        packageService.addPackage(pack,file);
-//        return "Package added";
-//    }
 
-    @PostMapping(value = "/admin/addPackage")
-    public Packages addPackage(@RequestBody Packages pack) throws IOException {
+    @PostMapping(value = "/addPackage")
+    public ResponseEntity<Packages> addPackage(@RequestBody Packages pack) throws IOException {
         System.out.println("Received Package: " + pack);
-        return packageService.addPackage(pack);
+        return ResponseEntity.ok(packageService.addPackage(pack));
     }
 
     //--------------------------Get pack by id-------------------------------------------
-    @GetMapping("/user/getPackage/{id}")
+    @GetMapping("/getPackage/{id}")
     public ResponseEntity<Optional<Packages>> getPackage(@PathVariable int id) {
         return ResponseEntity.ok(packageService.getPackage(id));
     }
 
     @GetMapping("/getAllPackage")
-    public ResponseEntity<List<Packages>>getAllPackages(){
+    public ResponseEntity<List<Packages>> getAllPackages() {
         return ResponseEntity.ok(packageService.getAllPackages());
     }
 
     //------------------------update pack details---------------------------------------
-//    @PutMapping("/user/update/{id}")
-//    public User updateUser(@RequestBody User user,@PathVariable int id) {
-//        return userService.updateUser(user,id);
-//
-//    }
+    @PutMapping("/updatePackages/{id}")
+    public Packages updatePackage(@RequestBody Packages pack,@PathVariable int id) {
+        return packageService.updatePackage(pack,id);
+    }
 
     //-----------------------------Delete package-------------------------------------------
     @DeleteMapping("/deletePack/{id}")

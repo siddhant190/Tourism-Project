@@ -2,8 +2,6 @@ package com.tourism.Travel_Buddy.model;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
-
 @Entity
 public class Packages {
 
@@ -11,6 +9,8 @@ public class Packages {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String location;
+
+    @Column(length = 10000)
     private String description;
     private float price;
     @Lob

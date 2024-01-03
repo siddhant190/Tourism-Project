@@ -5,12 +5,16 @@ public class JWTResponse {
     private String jwtToken;
     private String username;
 
+    private String role;
+
+
     public JWTResponse() {
     }
 
-    public JWTResponse(String jwtToken, String username) {
+    public JWTResponse(String jwtToken, String username,String role) {
         this.jwtToken = jwtToken;
         this.username = username;
+        this.role = role;
     }
 
     public String getJwtToken() {
@@ -27,6 +31,14 @@ public class JWTResponse {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override

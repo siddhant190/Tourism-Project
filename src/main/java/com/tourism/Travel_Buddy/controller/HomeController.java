@@ -1,19 +1,13 @@
 package com.tourism.Travel_Buddy.controller;
 
-import ch.qos.logback.core.model.Model;
 import com.tourism.Travel_Buddy.config.JWTHelper;
-import com.tourism.Travel_Buddy.model.JWTRequest;
-import com.tourism.Travel_Buddy.model.JWTResponse;
-import com.tourism.Travel_Buddy.model.Status;
-import com.tourism.Travel_Buddy.model.User;
+import com.tourism.Travel_Buddy.model.*;
 import com.tourism.Travel_Buddy.repository.UserRepo;
 import com.tourism.Travel_Buddy.services.HomeService;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -43,6 +37,7 @@ public class HomeController {
     @Autowired
     private UserDetailsService userDetailsService;
 
+
     private Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 
@@ -52,8 +47,7 @@ public class HomeController {
         UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmail());
         String token = this.helper.generateToken(request.getEmail());
 
-        //User user = userRepo.findById(request.getEmail()).get();
-        return new JWTResponse(token,request.getEmail());
+        return new JWTResponse(token,request.getEmail(),userRepo.getRoleByEmail(request.getEmail()));
     }
 
     private void doAuthenticate(String email,String password){
@@ -67,8 +61,9 @@ public class HomeController {
 
 
     //-------------------------Register user---------------------------------------------
-    @PostMapping("/registerUser")
+    @PostMapping("/register")
     public User registerUser(@RequestBody User user) {
+        System.out.println("register");
         return homeService.registerUser(user);
     }
 
