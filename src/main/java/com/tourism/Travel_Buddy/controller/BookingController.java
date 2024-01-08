@@ -22,9 +22,15 @@ public class BookingController {
         return bookingService.getAllBookings();
     }
 
-    @GetMapping("/getBooking/{id}")
-    public Optional<PackageBooking> getBookingById(@PathVariable int id) {
+    @GetMapping("/getBookingById")
+    public Optional<PackageBooking> getBookingById(@RequestParam int id) {
         return bookingService.getBookingById(id);
+    }
+
+
+    @GetMapping("/getBookingByUserId")
+    public List<PackageBooking> getBookingByUserId(@RequestParam("username") String username) {
+        return bookingService.getBookingByUsername(username);
     }
 
     //------------------------ADD booking----------------------------------------------------------------
@@ -44,10 +50,10 @@ public class BookingController {
 
     //------------------------Delete booking----------------------------------------------------------------
 
-    @DeleteMapping("/deleteBooking/{id}")
-    public void deleteBooking(@PathVariable int id) {
-        bookingService.deleteBooking(id);
-    }
+//    @DeleteMapping("/deleteBooking/{id}")
+//    public void deleteBooking(@PathVariable int id) {
+//        bookingService.deleteBooking(id);
+//    }
 
     
 }

@@ -27,7 +27,7 @@ public class PackageBooking {
 
 //	@OneToOne(cascade = CascadeType.ALL)
 //	@JoinColumn(name = "userId")
-	private String userId;
+	private String username;
 	
 //	@OneToOne(cascade = CascadeType.ALL)
 //	@JoinColumn(name = "packageId")
@@ -37,14 +37,14 @@ public class PackageBooking {
 	public PackageBooking() {
 	}
 
-	public PackageBooking(int id, String travellerName, String travellerMobile, Date tourStartDate, Date packageBookDate, int totalMember, String userId, String packageId) {
+	public PackageBooking(int id, String travellerName, String travellerMobile, Date tourStartDate, Date packageBookDate, int totalMember, String username, String packageId) {
 		this.id = id;
 		this.travellerName = travellerName;
 		this.travellerMobile = travellerMobile;
 		this.tourStartDate = tourStartDate;
 		this.packageBookDate = packageBookDate;
 		this.totalMember = totalMember;
-		this.userId = userId;
+		this.username = username;
 		this.packageId = packageId;
 	}
 
@@ -96,12 +96,12 @@ public class PackageBooking {
 		this.totalMember = totalMember;
 	}
 
-	public String getUser() {
-		return userId;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUser(String userId) {
-		this.userId = userId;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPackages() {

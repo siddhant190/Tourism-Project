@@ -25,8 +25,8 @@ public class PackageController {
     }
 
     //--------------------------Get pack by id-------------------------------------------
-    @GetMapping("/getPackage/{id}")
-    public ResponseEntity<Optional<Packages>> getPackage(@PathVariable int id) {
+    @GetMapping("/getPackageById")
+    public ResponseEntity<Optional<Packages>> getPackage(@RequestParam int id) {
         return ResponseEntity.ok(packageService.getPackage(id));
     }
 
@@ -36,14 +36,14 @@ public class PackageController {
     }
 
     //------------------------update pack details---------------------------------------
-    @PutMapping("/updatePackages/{id}")
-    public Packages updatePackage(@RequestBody Packages pack,@PathVariable int id) {
+    @PutMapping("/updatePackages")
+    public Packages updatePackage(@RequestBody Packages pack,@RequestParam int id) {
         return packageService.updatePackage(pack,id);
     }
 
     //-----------------------------Delete package-------------------------------------------
-    @DeleteMapping("/deletePack/{id}")
-    public ResponseEntity<String> deletePackage(@PathVariable int id) {
+    @DeleteMapping("/deletePack")
+    public ResponseEntity<String> deletePackage(@RequestParam int id) {
         packageService.deletePackage(id);
         return ResponseEntity.ok("Delete package successful");
     }

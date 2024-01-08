@@ -39,9 +39,13 @@ public class BookingService {
     }
 
 
-   //---------------------------------Delete Booking-------------------------------------------------
-   public void deleteBooking(int id) {
-       bookingRepository.deleteById(id);
-   }
+    //---------------------------------Get all Booking by user-------------------------------------------------
+
+    public List<PackageBooking> getBookingByUsername(String username) {
+        return bookingRepository.findByUsername(username);
+    }
+
+
+    //---------------------------------Delete Booking-------------------------------------------------
 
 }
